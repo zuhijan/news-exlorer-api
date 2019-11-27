@@ -1,9 +1,8 @@
 /* eslint-disable no-useless-escape */
 const routerUsers = require('express').Router();
 
-const { getUser } = require('../controllers/users');
+const { getUserById } = require('../controllers/users');
 
-routerUsers.get('/me', getUser);
-
+routerUsers.get('/me', getUserById);
 
 module.exports = routerUsers;

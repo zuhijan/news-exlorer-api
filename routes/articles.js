@@ -1,5 +1,5 @@
 /* eslint-disable quotes */
-const routerCards = require('express').Router();
+const routerArticles = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 
 const {
@@ -7,8 +7,8 @@ const {
 } = require('../controllers/articles');
 
 
-routerCards.get('/', getArticles);
-routerCards.post('/', celebrate({
+routerArticles.get('/', getArticles);
+routerArticles.post('/', celebrate({
   body: Joi.object().keys({
     keyword: Joi.string().required(),
     title: Joi.string().required(),
@@ -25,6 +25,6 @@ routerCards.post('/', celebrate({
     ),
   }),
 }), createArticle);
-routerCards.delete('/:cardId', removeArticleById);
+routerArticles.delete('/:articleId', removeArticleById);
 
-module.exports = routerCards;
+module.exports = routerArticles;
