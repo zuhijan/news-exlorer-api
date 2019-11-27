@@ -23,8 +23,6 @@ mongoose.connect('mongodb://localhost:27017/newsdatab', {
   useFindAndModify: false,
 });
 
-// eslint-disable-next-line no-console
-console.log(process.env.NODE_ENV);
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

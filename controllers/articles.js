@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 const mongoose = require('mongoose');
 const Article = require('../models/article');
 
@@ -34,8 +33,6 @@ module.exports.createArticle = (req, res, next) => {
 module.exports.removeArticleById = (req, res, next) => {
   const owner = req.user._id;
   const { articleId } = req.params;
-
-  console.log(mongoose.Types.ObjectId.isValid(articleId));
 
   objectIdValid(articleId);
 
