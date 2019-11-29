@@ -2,7 +2,7 @@
 
 ![alt text](https://i.ibb.co/yQwyp0R/123.png "Logo NewsExplorer")
 
-## для проекта news-explorer
+## для проекта [news-explorer](http://news-explorer.ru/)
 
 Обратиться к API:
 
@@ -42,16 +42,21 @@
 
 возвращает информацию о пользователе (email и имя)
 > GET /users/me
+
 возвращает все сохранённые пользователем статьи
 > GET /articles
+
 создаёт статью с переданными в теле
 keyword, title, text, date, source, link и image
 > POST /articles
+
 удаляет сохранённую статью  по _id
 > DELETE /articles/articleId
+
 создаёт пользователя с переданными в теле
 email, password и name
 > POST /signup
+
 проверяет переданные в теле почту и пароль
 и возвращает JWT
 > POST /signin
@@ -69,13 +74,17 @@ email, password и name
 
 Склонируйте гит-репозиторий
 > git clone <https://github.com/zuhijan/news-exlorer-api.git>
+
 Установите npm-зависимости
 > npm install
+
 Установите MongoDB
-<https://docs.mongodb.com/manual/installation/>
+> <https://docs.mongodb.com/manual/installation/>
+
 Запустите проект
 Production сборка.Запустить сервер на localhost:3000.
 > npm run start
+
 Dev сборка.Запустить сервер на localhost:3000 с хот релоудом;
 > npm run dev
 
