@@ -1,4 +1,3 @@
-/* eslint-disable quotes */
 const routerArticles = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 
@@ -15,14 +14,10 @@ routerArticles.post('/', celebrate({
     text: Joi.string().required(),
     date: Joi.string().required(),
     source: Joi.string().required(),
-    link: Joi.string().required().regex(
-      // eslint-disable-next-line no-useless-escape
-      /^(http:[\/][\/]|https:[\/][\/])(((\d{1,3}[\.]){3}\d{1,3}([:]\d{2,5})?)[\/]?|(w{3}[\.])?\w+([\.]\w+)?([^www][\.][a-zA-Z]{2,5})([\/]\w+)*(#)?[\/]?)/,
-    ),
-    image: Joi.string().required().regex(
-      // eslint-disable-next-line no-useless-escape
-      /^(http:[\/][\/]|https:[\/][\/])(((\d{1,3}[\.]){3}\d{1,3}([:]\d{2,5})?)[\/]?|(w{3}[\.])?\w+([\.]\w+)?([^www][\.][a-zA-Z]{2,5})([\/]\w+)*(#)?[\/]?)/,
-    ),
+    link: Joi.string().required().max(50)
+      .uri({ allowRelative: true }),
+    image: Joi.string().required().max(50)
+      .uri({ allowRelative: true }),
   }),
 }), createArticle);
 routerArticles.delete('/:articleId', removeArticleById);

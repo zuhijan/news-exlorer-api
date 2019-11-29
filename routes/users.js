@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 const routerUsers = require('express').Router();
 
 const { getUserById } = require('../controllers/users');
