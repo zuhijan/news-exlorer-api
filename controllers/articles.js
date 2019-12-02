@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const Article = require('../models/article');
 
-const { NotFoundError, ForbiddenError, SuccesError } = require('../errors/all-status-err');
+const NotFoundError = require('../errors/not-found-err');
+const ForbiddenError = require('../errors/forbidden-err');
+const SuccesError = require('../errors/succes-err');
 
 
 function objectIdValid(id) {
