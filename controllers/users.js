@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const { NODE_ENV, JWT_SECRET } = process.env;
 const User = require('../models/user');
 const NotFoundError = require('../errors/not-found-err');
+// const BadRequestError = require('../errors/bad-req-err');
 
 module.exports.getUserById = (req, res, next) => {
   const owner = req.user._id;
@@ -18,7 +19,7 @@ module.exports.getUserById = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.createUser = (req, res) => {
+module.exports.createUser = (req, res, next) => {
   const {
     name, email,
   } = req.body;
@@ -27,8 +28,16 @@ module.exports.createUser = (req, res) => {
       name, email, password: hash,
     }))
     .then((user) => res.send({ user }))
-    .catch(() => res.status(400).send('Пользователь с таким email существует'));
-// .catch(next);
+    // .then((user) => {
+    //   if (!user) {
+    //     console.log('qe');
+    //     throw new BadRequestError('Пользователь с таким email существует');
+    //   }
+    //   console.log('qweqewqeq');
+    //   res.send(user);
+    // })
+    // .catch(() => res.status(400).send('Пользователь с таким email существует'));
+    .catch(next);
 };
 // TODO: разобраться с валидацией на сервере, как сделать так, чтобы передавался нужный мне текст
 // если емэил существует при создании - и при этом работал централизованный обрабочтик
