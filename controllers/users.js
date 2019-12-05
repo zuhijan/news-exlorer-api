@@ -27,7 +27,7 @@ module.exports.createUser = (req, res, next) => {
     .then((hash) => User.create({
       name, email, password: hash,
     }))
-    .then((user) => res.send({ name: user.name, email: user.email, id: user._id }))
+    .then((user) => res.status(201).send({ name: user.name, email: user.email, id: user._id }))
     .catch(() => {
       next(new BadRequestError('Пользователь с такими данными уже существует'));
     });

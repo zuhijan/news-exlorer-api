@@ -4,4 +4,4 @@ class SuccesError extends Error {
     this.statusCode = 200;
   }
 }
-module.exports = { SuccesError };
+module.exports = SuccesError;
