@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const { NODE_ENV, JWT_SECRET } = process.env;
 const User = require('../models/user');
 const NotFoundError = require('../errors/not-found-err');
-// const BadRequestError = require('../errors/bad-req-err');
+const BadRequestError = require('../errors/bad-req-err');
 
 module.exports.getUserById = (req, res, next) => {
   const owner = req.user._id;
@@ -14,7 +14,7 @@ module.exports.getUserById = (req, res, next) => {
       if (!user) {
         throw new NotFoundError('Нет пользователя с таким id');
       }
-      res.send(user);
+      res.send({ name: user.name, email: user.email });
     })
     .catch(next);
 };
@@ -27,21 +27,11 @@ module.exports.createUser = (req, res, next) => {
     .then((hash) => User.create({
       name, email, password: hash,
     }))
-    .then((user) => res.send({ user }))
-    // .then((user) => {
-    //   if (!user) {
-    //     console.log('qe');
-    //     throw new BadRequestError('Пользователь с таким email существует');
-    //   }
-    //   console.log('qweqewqeq');
-    //   res.send(user);
-    // })
-    // .catch(() => res.status(400).send('Пользователь с таким email существует'));
-    .catch(next);
+    .then((user) => res.send({ name: user.name, email: user.email, id: user._id }))
+    .catch(() => {
+      next(new BadRequestError('Пользователь с такими данными уже существует'));
+    });
 };
-// TODO: разобраться с валидацией на сервере, как сделать так, чтобы передавался нужный мне текст
-// если емэил существует при создании - и при этом работал централизованный обрабочтик
-//  ошибок как везде.
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;

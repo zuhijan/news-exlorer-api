@@ -2,6 +2,7 @@ require('dotenv').config();
 require('./mongod');
 const express = require('express');
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const rootRouter = require('./routes/routers');
@@ -11,6 +12,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const { PORT = 3000 } = process.env;
 
 const app = express();
+app.use(helmet());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
