@@ -6,7 +6,7 @@
 
 Обратиться к API:
 
-- api.news-explorer
+- api.news-explorer.ru
 - 84.201.140.162
 
 ### Используемые технологии
@@ -71,3 +71,4 @@ Dev сборка.Запустить сервер на localhost:3000 с хот �
 Для Production сборки, необходим .env:
 > NODE_ENV=production
 > JWT_SECRET=some-secret-key
+> DB_ADRESS='mongodb://localhost:27017/newsdatab'
