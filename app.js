@@ -3,6 +3,7 @@ require('./mongod');
 const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
@@ -18,6 +19,7 @@ const limiter = rateLimit({
 });
 
 const app = express();
+app.use(cors());
 app.use(limiter);
 app.use(helmet());
 app.use(cookieParser());
