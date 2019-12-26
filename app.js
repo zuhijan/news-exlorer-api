@@ -19,7 +19,7 @@ const limiter = rateLimit({
 });
 
 const app = express();
-app.use(cors());
+app.use(cors({ credentials: true, origin: 'http://127.0.0.1:8080' }));
 app.use(limiter);
 app.use(helmet());
 app.use(cookieParser());
