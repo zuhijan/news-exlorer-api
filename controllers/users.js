@@ -43,7 +43,7 @@ module.exports.login = (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         // domain: 'localhost',
         // httpOnly: false,
-        // sameSite: true,
+        sameSite: false,
       }).end();
       // res.set('Set-Cookie', `name=${token}`).send();
     })
