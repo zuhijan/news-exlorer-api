@@ -44,6 +44,7 @@ module.exports.login = (req, res, next) => {
         // domain: 'localhost',
         // httpOnly: false,
         sameSite: 'none',
+        secure: true,
       }).end();
       // res.set('Set-Cookie', `name=${token}`).send();
     })
