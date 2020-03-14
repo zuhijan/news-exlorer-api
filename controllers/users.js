@@ -42,7 +42,7 @@ module.exports.login = (req, res, next) => {
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         // domain: 'localhost',
-        httpOnly: false,
+        // httpOnly: false,
         // sameSite: true,
       }).end();
       // res.set('Set-Cookie', `name=${token}`).send();
