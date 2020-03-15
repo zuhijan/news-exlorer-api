@@ -49,7 +49,7 @@ module.exports.removeArticleById = (req, res, next) => {
             })
             .catch(next);
         } else {
-          throw new ForbiddenError('Недостаточно прав');
+          throw new ForbiddenError(`Недостаточно прав ${owner} - ${article.owner.toString()}`);
         }
       } else {
         throw new NotFoundError('Такой статьи не существует');
