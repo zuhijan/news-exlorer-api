@@ -5,12 +5,20 @@ const AuthError = require('../errors/auth-err');
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 module.exports = (req, res, next) => {
-  console.log(`try auth: ${req.cookies.jwt}`);
+  // console.log(`try auth: ${req.cookies.jwt}`);
+  //
+  // if (!req.cookies.jwt) {
+  //   throw new AuthError('Необходима авторизация!');
+  // }
+  // const token = req.cookies.jwt;
 
-  if (!req.cookies.jwt) {
-    throw new AuthError('Необходима авторизация!');
+  const { authorization } = req.headers;
+  if (!authorization || !authorization.startsWith('Bearer ')) {
+    return res
+      .status(401)
+      .send({ message: 'Необходима авторизация' });
   }
-  const token = req.cookies.jwt;
+  const token = authorization.replace('Bearer ', '');
   let payload;
 
 
