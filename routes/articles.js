@@ -14,9 +14,9 @@ routerArticles.post('/', celebrate({
     text: Joi.string().required(),
     date: Joi.string().required(),
     source: Joi.string().required(),
-    link: Joi.string().required().max(50)
+    link: Joi.string().required().max(100)
       .uri({ allowRelative: true }),
-    image: Joi.string().required().max(50)
+    image: Joi.string().required().max(100)
       .uri({ allowRelative: true }),
   }),
 }), createArticle);
