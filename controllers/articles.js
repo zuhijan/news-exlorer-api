@@ -14,7 +14,8 @@ function objectIdValid(id) {
 
 
 module.exports.getArticles = (req, res, next) => {
-  Article.find({})
+  const { _id } = req.user;
+  Article.find({ owner: _id })
     .then((articles) => res.send({ data: articles }))
     .catch(next);
 };
