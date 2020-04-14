@@ -11,8 +11,14 @@
 
 ### Используемые технологии
 
-pm2, nginx, git, node.js, express.js, npm, ssl(certbot: Let's Encrypt), mongo, mongoose, winston, celebrate.
-
+- Менеджер процессов: pm2
+- HTTP-сервер: nginx
+- Сервер: node.js, express.js
+- Сертификат ssl: certbot(Let's Encrypt)
+- Валидация данных: celebrate(Joi)
+- База данных: mongo, mongoose
+- логирование: winston
+- остальное: npm, git
 ---
 
 ### Функциональность API
